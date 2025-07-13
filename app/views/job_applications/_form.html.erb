@@ -1,0 +1,40 @@
+<%= form_with(model: [@job, application]) do |form| %>
+  <% if application.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+        <% application.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="form-group"><%= @job.title %></h3>
+    </div>
+
+    <div class="card-body">
+      <div class="field">
+        <%= form.label :resume, class: "form-group" %>
+        <%= form.file_field :resume , class: "form-group" %>
+        <% if application.errors[:resume].any? %>
+          <div class="error"><%= application.errors[:resume].first %></div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= form.hidden_field :job_id, value: @job.id %>
+      </div>
+      <div>
+        <%= form.hidden_field :status, value: :applied %>
+      </div>
+      <br>
+      <div>
+        <%= form.submit class: "btn btn-success"%>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<div id="<%= dom_id question %>">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <%= question.statement %>
+      <footer class="blockquote-footer">
+        <ol type='a'>
+          <% options(question).each do |opt| %>
+            <li><%= opt.option %></li>
+          <% end %>
+        </ol>
+      </footer>
+    </blockquote>
+  </div>
+</div>

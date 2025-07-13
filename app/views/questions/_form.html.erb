@@ -1,0 +1,43 @@
+<%= form_with(model: [@assessment, question]) do |form| %>
+  <% if question.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Question</label>
+      <div class="col-sm-10">
+        <%= form.text_area :statement, class: "form-control"%>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <div class="col-sm-2">Options</div>
+      <div class="col-sm-10">
+        <%= form.fields_for :answers do |answer_fields| %>
+          <div class="form-check">
+            <%= answer_fields.hidden_field :id %>
+            <%= answer_fields.check_box :correct, class: "form-check-input" %>
+            <%= answer_fields.text_field :option, class: "form-check-label" %>
+          </div>
+          <div class="field">
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

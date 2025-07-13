@@ -1,0 +1,17 @@
+<div id="<%= dom_id company %>">
+  <div class="card-header">
+    <% if company.logo.attached? %>
+      <%= image_tag url_for(company.logo), class: "card-img-top mx-auto d-block", style: "width: auto; height: auto;" %>
+    <% else %>
+      <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mx-auto d-block" alt="No Logo" style="width: 150px; height: 150px;">
+    <% end %>
+  </div>
+  <div class="card-body text-center">
+    <p class="card-text"><strong>Email:</strong> <%= company.email %></p>
+    <p class="card-text"><strong>Category:</strong> <%= company.category %></p>
+    <p class="card-text"><strong>Description:</strong> <%= company.description %></p>
+    <p class="card-text"><strong>Address:</strong> <%= company.address %></p>
+    <p class="card-text"><strong>Phone:</strong> <%= company.phone %></p>
+    <p class="card-text"><strong>Registration No:</strong> <%= company.registration_number %></p>
+  </div>
+</div>

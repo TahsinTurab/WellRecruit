@@ -1,0 +1,63 @@
+<div class="d-grid gap-2 col-6 mx-auto">
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <h2>How do you want to use WellRecruit?</h2>
+  <p>We'll personalize your setup experience accordingly.</p>
+  <button type="button" class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#admin">
+    I'm here to create a new company profile
+  </button>
+  <button type="button" class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#recruiter">
+    I'm here to hire talent
+  </button>
+  <button type="button" class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#candidate">
+    I'm here to find a opportunity
+  </button>
+</div>
+
+<!--Admin Modal -->
+<div class="modal fade" id="admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sign up as admin</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'devise/registrations/signup', locals: { role_type: :admin } %>
+        <%#= render "devise/registrations/signup"%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recruiter Modal -->
+<div class="modal fade" id="recruiter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sign up as recruiter</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'devise/registrations/signup', locals: { role_type: :recruiter } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Candidate Modal -->
+<div class="modal fade" id="candidate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sign up as a candidate</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'devise/registrations/signup', locals: { role_type: :candidate } %>
+      </div>
+    </div>
+  </div>
+</div>

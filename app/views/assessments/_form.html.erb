@@ -1,0 +1,41 @@
+<%= form_with(model: [@job, assessment]) do |form| %>
+  <% if assessment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(assessment.errors.count, "error") %> prohibited this assessment from being saved:</h2>
+
+      <ul>
+        <% assessment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= form.label :title, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <%= form.label :starting_time, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.datetime_field :starting_time, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <%= form.label :ending_time, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.datetime_field :ending_time, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

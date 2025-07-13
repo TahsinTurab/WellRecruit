@@ -1,0 +1,29 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Companies</h1>
+
+<div id="companies">
+  <% @companies.each_slice(3) do |company_group| %>
+    <div class="row mb-4">
+      <% company_group.each do |company| %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card text-center">
+            <%= image_tag company.logo, class: "card-img-top", alt: company.name %>
+            <div class="card-body">
+              <p class="card-text" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>
+                  <i class="fas fa-signal"></i> <%= company.category %>
+                </span>
+              </p>
+              <h4 class="card-title"><%= company.name %></h4>
+              <%= link_to "Show this company", company, method: :get, class: 'btn btn-outline-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="pagination-container d-flex justify-content-center mt-4 fixed-bottom">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>

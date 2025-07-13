@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<%#= render @application %>
+<%= render 'job_applications/application', application: @application %>
+
+<div class="d-flex">
+  <%= button_to "Cancel this application", @application, method: :delete, class: "btn btn-danger btn-sm" %>
+</div>

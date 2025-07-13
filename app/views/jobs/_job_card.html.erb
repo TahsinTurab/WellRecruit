@@ -1,0 +1,30 @@
+<div id="jobs">
+  <% @jobs.each_slice(3) do |jobs_group| %>
+    <div class="row mb-4">
+      <% jobs_group.each do |job| %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= job.title %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">Location: <%= job.location %></h6>
+
+              <p class="card-text">
+                <strong>Salary range:</strong> <%= job.salary_range %><br>
+                <strong>Deadline:</strong> <%= job.deadline %><br>
+              </p>
+              <%= link_to "Show Details", job, class: "btn btn-primary btn-sm" %>
+              <% if current_user && job.user_id == current_user.id %>
+              <%= link_to "Show Applications", job_applications_path(job), class: "btn btn-info
+               btn-sm" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="pagination-container d-flex justify-content-center mt-4">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+<h1>Manage Recruiters</h1>
+
+<table class="table table-striped-columns">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recruiters.each do |recruiter| %>
+      <tr>
+        <td><%= recruiter.name %></td>
+        <td><%= recruiter.email %></td>
+        <td class="d-flex">
+          <% if !recruiter.is_verified %>
+            <%= link_to "Approve", approve_recruiter_admin_path(current_user, recruiter), method: :get, class: "btn btn-success btn-sm" %>&nbsp;
+          <% end %>
+          <%= link_to "Delete", destroy_recruiter_admin_path(current_user, recruiter), method: :get, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

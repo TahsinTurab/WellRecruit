@@ -1,0 +1,9 @@
+<strong>Hi <%= @user.name %>,</strong>
+<p>
+  You are not selected for the MCQ assessment round for the job: <%= @application.job.title %>
+  To show details please follow this link: <%= link_to "show details", @url %>
+</p>
+<p>
+  Regards,<br>
+  Team WellRecruit
+</p>

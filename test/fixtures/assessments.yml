@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  starting_time: 2024-07-25 10:47:39
+  ending_time: 2024-07-25 10:47:39
+  candidate_selection: 1
+  job: one
+
+two:
+  title: MyString
+  starting_time: 2024-07-25 10:47:39
+  ending_time: 2024-07-25 10:47:39
+  candidate_selection: 1
+  job: two

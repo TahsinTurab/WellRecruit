@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container my-4">
+  <div class="row">
+    <div class="col d-flex justify-content-between">
+      <h1>Questions</h1>
+      <%= link_to "Add New Question", new_assessment_question_path(@assessment), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+
+<div id="questions">
+    <% @questions.each do |question| %>
+        <div class="card">
+          <div class="card-body">
+            <%= render question %>
+          </div>
+          <div class="card-header d-flex justify-content">
+            <%= link_to "Edit", edit_question_path(question), method: :get, class: "btn btn-warning btn-sm" %>&nbsp;
+            <%= button_to "Delete", question, method: :delete, class: "btn btn-danger btn-sm" %>
+          </div>
+        </div>
+    <br>
+    <% end %>
+</div>

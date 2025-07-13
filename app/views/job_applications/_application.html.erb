@@ -1,0 +1,38 @@
+<div id="<%= dom_id application %>">
+
+  <% if application.applied? %>
+    <div class="alert alert-primary" role="alert">
+      Your Application is in pending!
+    </div>
+  <% elsif application.selected? %>
+    <div class="alert alert-info" role="alert">
+      You are selected for the MCQ Assessment.
+    </div>
+  <% elsif application.passed? %>
+    <div class="alert alert-success" role="alert">
+      You've passed the MCQ Assessment.
+    </div>
+  <% else %>
+    <div class="alert alert-danger" role="alert">
+      We are unable to proceed with you!
+    </div>
+  <% end %>
+
+  <% if application.selected? && assessment(application).present? %>
+    <h5><%= assessment(application).title %></h5>
+    <strong>Starting time:    </strong> <%= schedule(application) %><br>
+    <strong>Duration:</strong> <%= duration(application) %> minutes<br>
+    <% if participation(application).nil? %>
+      <%= link_to "Take assessment", new_application_participation_path(application), class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
+  <% if participation_score(application).present? %>
+    <div class="card">
+      <div class="card-body">
+        <strong>Your obtained score: </strong> <%= participation_score(application) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>

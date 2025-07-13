@@ -1,0 +1,10 @@
+<%= form_with model: [@assessment, question], local: true do |f| %>
+
+  <div id="questions">
+  </div>
+  <br>
+  <%= link_to "Add More Question", "#", id: "add-question", class: "btn btn-success" %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+<%= javascript_include_tag 'questions' %>
+

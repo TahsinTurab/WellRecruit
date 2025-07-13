@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @assessment %>
+
+<div class="d-flex">
+  <%= link_to "Set Questions", assessment_questions_path(@assessment), method: :get, class: "btn btn-success" %>&nbsp;
+  <%= link_to "Edit", edit_assessment_path(@assessment),class: "btn btn-warning" %>&nbsp;
+  <%= button_to "Destroy", @assessment, method: :delete, class: "btn btn-danger" %>
+</div>

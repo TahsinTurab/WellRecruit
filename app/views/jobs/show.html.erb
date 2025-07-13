@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="card">
+  <div class="card-body">
+    <%= render @job %>
+  </div>
+  <div class="card-header d-flex">
+    <% if current_user == @job.user %>
+      <%= link_to "Back to jobs", my_jobs_path, class: "btn btn-sm btn-secondary" %>&nbsp;
+      <%= link_to "Edit job", edit_job_path(@job), class: "btn btn-sm btn-warning" %>&nbsp;
+      <% if @job.assessment.nil? %>
+        <%= link_to "Add Assessment", new_job_assessment_path(@job), class: "btn btn-sm btn-primary" %>&nbsp;
+      <% else %>
+        <%= link_to "Show Assessment", assessment_path(@job.assessment), class: "btn btn-sm btn-info" %>&nbsp;
+      <% end %>
+      <%= button_to "Destroy this job", @job, method: :delete, class: "btn btn-sm btn-danger" %>
+
+    <% elsif can_apply?(@job) %>
+      <% if has_applied(@job).nil? %>
+        <%= link_to "Apply Now", new_job_application_path(@job), class: "btn btn-sm btn-primary" %>
+      <% else %>
+        <%= link_to "Show Application", application_path(has_applied(@job)), class: "btn btn-sm btn-primary" %>
+      <% end %>
+  <% end %>
+  </div>
+</div>

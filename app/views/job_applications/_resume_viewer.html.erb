@@ -1,0 +1,25 @@
+<button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<%= application.id %>">
+  Show Resume
+</button>
+
+<div class="modal fade" id="exampleModal<%= application.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Resume</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% if application.resume.attached? %>
+          <iframe src="<%= url_for(application.resume) %>" width="100%" height="700px"></iframe>
+        <% else %>
+          <p>No PDF attached.</p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "Reject", change_status_application_path(id: application.id, status: :rejected), class: "btn btn-danger" %>
+        <%= link_to "Select", change_status_application_path(id: application.id, status: :selected), class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

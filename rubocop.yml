@@ -1,0 +1,5 @@
+require:
+  - rubocop-gemfile
+Gemfile:
+  Enabled: true
+  EnforcedStyle: alphabetically
